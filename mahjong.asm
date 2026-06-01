@@ -1,12 +1,12 @@
-.data
-
 mapa: .asciz "+---+---+---+\n| A | B | C |\n+---+---+---+\n| D | E | F |\n+---+---+---+\n| G | H | I |\n+---+---+---+\n "
 longitud = . - mapa
 
 fila: .byte 2
-columna: .byte 0
+columna: .byte 2
 mensajeFila: .asciz "ingrese fila: "
-longMensajeFila = . - mensajeFila
+longMensajeFila = .-mensajeFila
+mensajeColumna: .asciz "ingrese columna: "
+longMensajeColumna = .-mensajeColumna
 
 entrada: .byte 0,0
 
@@ -55,3 +55,67 @@ ldr r2, =longMensajeFila
 bl mostrar
 
 mov r7, #3
+mov r0, #0
+ldr r1, =entrada
+mov r2, #2
+swi 0
+
+ldr r1, =entrada
+ldrb r2, [r1]
+
+mov r4, #48
+sub r2,r2,r4
+
+ldr r1, =fila
+strb r2, [r1]
+
+pop {lr}
+bx lr
+.fnend
+
+leerColumna:
+.fnstart
+push {lr}
+
+ldr r1, =mensajeColumna
+ldr r2, =longMensajeColumna
+bl mostrar
+
+mov r7, #3
+mov r0, #0
+ldr r1, =entrada
+mov r2, #2
+swi 0
+
+ldr, =entrada
+
+pop {lr}
+bx lr
+.fnend
+
+.global main
+
+main:
+ldr r1, =mapa
+ldr r2, =longitud
+bl mostrar
+
+ldr r1, =mapa
+
+bl leerFila
+
+ldr r2, =fila
+ldrb r2, [r2]
+
+ldr r3, =columna
+ldrb r3, [r3]
+
+bl seleccionar
+
+ldr r1, =mapa
+ldr r2, =longitud
+bl mostrar
+
+fin:
+mov r7,#1
+swi 0
