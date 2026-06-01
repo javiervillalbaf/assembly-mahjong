@@ -1,6 +1,6 @@
 .data
 
-mapa: .asciz "+---+---+---+\n| A | B | C |\n+---+---+---+\n| D | E | F |\n+---+---+---+\n| G | H | I |\n+---+---+---+\n"
+mapa: .asciz "   1    2    3 \n  +---+---+---+\n1 | A | B | C |\n  +---+---+---+\n2 | D | E | F |\n  +---+---+---+\n3 | G | H | I |\n  +---+---+---+\n"
 longitud = . - mapa
 
 fila: .byte 2
@@ -32,14 +32,14 @@ push {lr}
 
 ldr r1, =mapa
 
-mov r4, #28
+mov r4, #32
 mul r6, r2, r4
 
 mov r4, #4
 mul r7, r3, r4
 
 add r6, r6, r7
-add r6, r6, #16
+add r6, r6, #36
 
 mov r5, #'X'
 strb r5, [r1, r6]
