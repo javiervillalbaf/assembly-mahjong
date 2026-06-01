@@ -1,3 +1,5 @@
+.data
+
 mapa: .asciz "+---+---+---+\n| A | B | C |\n+---+---+---+\n| D | E | F |\n+---+---+---+\n| G | H | I |\n+---+---+---+\n "
 longitud = . - mapa
 
@@ -87,7 +89,14 @@ ldr r1, =entrada
 mov r2, #2
 swi 0
 
-ldr, =entrada
+ldr r1, =entrada
+ldrb r2, [r1]
+
+mov r4, #48
+sub r2,r2,r4
+
+ldr r1, =columna
+strb r2, [r1]
 
 pop {lr}
 bx lr
@@ -103,6 +112,7 @@ bl mostrar
 ldr r1, =mapa
 
 bl leerFila
+bl leerColumna
 
 ldr r2, =fila
 ldrb r2, [r2]
