@@ -5,9 +5,9 @@ longitud = . - mapa
 
 fila: .byte 2
 columna: .byte 2
-mensajeFila: .asciz "ingrese fila: "
+mensajeFila: .asciz "ingrese fila (1-3): "
 longMensajeFila = .-mensajeFila
-mensajeColumna: .asciz "ingrese columna: "
+mensajeColumna: .asciz "ingrese columna (1-3): "
 longMensajeColumna = .-mensajeColumna
 
 entrada: .byte 0,0
@@ -52,6 +52,7 @@ leerFila:
 .fnstart
 push {lr}
 
+pedirFila:
 ldr r1, =mensajeFila
 ldr r2, =longMensajeFila
 bl mostrar
@@ -67,6 +68,11 @@ ldrb r2, [r1]
 
 mov r4, #48
 sub r2,r2,r4
+cmp r2,#1
+blt pedirFila
+cmp r2,#3
+bgt pedirFila
+
 sub r2,r2,#1
 
 ldr r1, =fila
@@ -80,6 +86,7 @@ leerColumna:
 .fnstart
 push {lr}
 
+pedirColumna:
 ldr r1, =mensajeColumna
 ldr r2, =longMensajeColumna
 bl mostrar
@@ -95,6 +102,13 @@ ldrb r2, [r1]
 
 mov r4, #48
 sub r2,r2,r4
+
+cmp r2,#1
+blt pedirColumna
+
+cmp r2,#3
+bgt pedirColumna
+
 sub r2,r2,#1
 
 ldr r1, =columna
