@@ -67,6 +67,7 @@ ldrb r2, [r1]
 
 mov r4, #48
 sub r2,r2,r4
+sub r2,r2,#1
 
 ldr r1, =fila
 strb r2, [r1]
@@ -94,6 +95,7 @@ ldrb r2, [r1]
 
 mov r4, #48
 sub r2,r2,r4
+sub r2,r2,#1
 
 ldr r1, =columna
 strb r2, [r1]
