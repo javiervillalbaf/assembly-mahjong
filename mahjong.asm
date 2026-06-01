@@ -1,6 +1,6 @@
 .data
 
-mapa: .asciz "+---+---+---+\n| A | B | C |\n+---+---+---+\n| D | E | F |\n+---+---+---+\n| G | H | I |\n+---+---+---+\n "
+mapa: .asciz "+---+---+---+\n| A | B | C |\n+---+---+---+\n| D | E | F |\n+---+---+---+\n| G | H | I |\n+---+---+---+\n"
 longitud = . - mapa
 
 fila: .byte 2
