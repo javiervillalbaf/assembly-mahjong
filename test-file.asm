@@ -51,14 +51,14 @@ push {lr}
 
 ldr r1, =mapa
 
-mov r4, #32
+mov r4, #72
 mul r6, r2, r4
 
 mov r4, #4
 mul r7, r3, r4
 
 add r6, r6, r7
-add r6, r6, #35
+add r6, r6, #75
 
 mov r5, #'X'
 strb r5, [r1, r6]
@@ -87,9 +87,11 @@ ldrb r2, [r1]
 
 mov r4, #48
 sub r2,r2,r4
+
 cmp r2,#1
 blt pedirFila
-cmp r2,#3
+
+cmp r2,#8
 bgt pedirFila
 
 sub r2,r2,#1
@@ -125,7 +127,7 @@ sub r2,r2,r4
 cmp r2,#1
 blt pedirColumna
 
-cmp r2,#3
+cmp r2,#8
 bgt pedirColumna
 
 sub r2,r2,#1

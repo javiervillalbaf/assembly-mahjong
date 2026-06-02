@@ -68,8 +68,10 @@ ldrb r2, [r1]
 
 mov r4, #48
 sub r2,r2,r4
+
 cmp r2,#1
 blt pedirFila
+
 cmp r2,#3
 bgt pedirFila
 
